@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 13:24:48 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/07/31 19:51:20 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/07/31 22:24:08 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*j_str;
 	char	*str_joined;
-	
+
+	printf("join [%s]with[%s] ", s1,s2);
 	if (!s1 || !s2)
 		return (0);
 	j_str = malloc((ft_strlen(s1) + ft_strlen(s2)) + 1);
@@ -85,7 +86,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s2++;
 		j_str++;
 	}
-	j_str++;
 	*j_str = '\0';
+	printf("return [%s]\n", str_joined);
 	return (str_joined);
 }

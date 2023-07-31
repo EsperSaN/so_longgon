@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:27:18 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/07/31 21:06:24 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/07/31 22:37:56 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,15 @@
 # include <errno.h>
 
 # define READ_SIZE 1
+# define UP_KEY 126
+# define DOWN_KEY 125
+# define LEFT_KEY 123
+# define RIGHT_KEY 124
+# define ESC_KEY 53
 
 typedef struct t_value
 {
-	char 	**array_yx;
+	char	**array_yx;
 	int		m_width;
 	int		m_hight;
 	void	*mlx_window;

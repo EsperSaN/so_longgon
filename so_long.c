@@ -6,16 +6,23 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:26:54 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/07/31 21:09:57 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/07/31 22:48:10 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// void	change_frame(t_data var)
-// {
+ int	change_frame(t_var *v)
+ {
+	int y = 0;
+	while (v->array_yx[y])
+	{
+		printf("|%s|\n", v->array_yx[y]);
+		y++;
+	}
+	return(0);
 		
-// }
+ }
 
 // void	change_data(t_data *var)
 // {
@@ -61,8 +68,7 @@ char	**file_checker(char	*maps)
 	int		fd;
 	char	**two_array;
 	int 	read_count;
-	//char	*tmp;
-
+	
 	printf("input = [%s]\n", maps);
 	fd = open(maps, O_RDONLY);
 	if (fd == -1)
@@ -80,9 +86,10 @@ char	**file_checker(char	*maps)
 	while (read_count != 0)
 	{
 		read_count = read(fd, buff, READ_SIZE);
+		buff[read_count] = '\0';
 		line_of_data = ft_strjoin(line_of_data, buff);
 	}
-	printf("line of data is [%s]\n", line_of_data);
+	printf("line of data is \n[%s]\n", line_of_data);
 	two_array = ft_split(line_of_data, '\n');
 	if (!two_array)
 		return (error(errno));
@@ -92,7 +99,7 @@ char	**file_checker(char	*maps)
 void	get_window_size(char **map_array, int *width, int *hight)
 {
 	int len;
-	
+
 	*width = 0;
 	*hight = 0;
 	if (!map_array)
@@ -101,15 +108,15 @@ void	get_window_size(char **map_array, int *width, int *hight)
 	while (map_array[*hight])
 	{
 		len = ft_strlen(map_array[*hight]);
-		if(len != *width)
-			return((void)error(errno));
+		if (len != *width)
+			return ((void)error(errno));
 		(*hight)++;
 	}
 }
 
 int	find_char_in_str(char *str,	int c)
 {
-	int i;
+	int	i;
 
 	if (!str)
 		return (-1);
@@ -117,28 +124,36 @@ int	find_char_in_str(char *str,	int c)
 	while (str[i])
 	{
 		if (str[i] == c)
-			return(i);
+			return (i);
 		i++;
 	}
-	return (-1);
+	return (0);
 }
 
-int	change_data(int key ,t_var	*v)
+int	key_maneger(int key ,t_var	*v)
 {
 	printf("INNNNNNNN\n");
-	// char	**data;
-	// int		y = 0;
-	// int		x = 0;
+	char	**data;
+	int		y = 0;
+	int		x = 0;
 	
-	// data = *m_data;
-	// while (data[y])
-	// {
-	// 	x = find_char_in_str(data[y], 'p');
-	// 	y++;
-	// }
-	// printf("[PLAYER IS AT THE {%d,%d}]\n", x,y);
-	if (key != -1)
-		printf("user press [%d]\n", key);
+	data = v->array_yx;
+	while (data[y])
+	{
+		x = find_char_in_str(data[y], 'p');
+		if (x > 0)
+			break;
+		y++;
+	}
+	printf("[PLAYER IS AT THE {%d,%d}]\n", x,y);
+	if (key == UP_KEY)
+		printf("move_up\n");
+	if (key == DOWN_KEY)
+		printf("move_down\n");
+	if (key == LEFT_KEY)
+		printf("move_left\n");
+	if (key == RIGHT_KEY)
+		printf("move_right\n");
 	return (1);
 }
 
@@ -174,8 +189,8 @@ int	main(int ac, char **av)
 	int scale = 32;
 	v.mlx_window = mlx_new_window(v.mlx, (v.m_width * scale), (v.m_hight * scale), "TEST");
 	printf("^^^^^^^^^^^^^[maps here2]^^^^^^^^^^^^^^^\n");
-	mlx_key_hook(v.mlx, change_data, &v);
+	mlx_key_hook(v.mlx_window, key_maneger, &v);
 	printf("^^^^^^^^^^^^^[maps here3]^^^^^^^^^^^^^^^\n");
-	//mlx_loop_hook(v.mlx, change_frame(), v);
+	//mlx_loop_hook(v.mlx, change_frame, &v);
 	mlx_loop(v.mlx);
 }
