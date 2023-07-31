@@ -6,7 +6,7 @@
 #    By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 18:21:34 by pruenrua          #+#    #+#              #
-#    Updated: 2023/07/25 19:00:33 by pruenrua         ###   ########.fr        #
+#    Updated: 2023/07/31 21:17:56 by pruenrua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-SRC = so_long.c
+SRC = so_long.c util_join_str_calloc.c util_split.c
 
 OBJ = $(SRC:.c=.o)
 
