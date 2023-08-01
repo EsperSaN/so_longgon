@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:26:54 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/02 01:25:44 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/02 02:02:48 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ int	main(int ac, char **av)
 		return (0);
 	st_init(&v);
 	v.array_yx = file_init(av[1]);
-	//lemme_check(v.array_yx);
+	if (double_a_check(v.array_yx))
+	{
+		free2d(v.array_yx);
+		error(98);
+	}
 	if (v.array_yx == NULL)
 		return (1);
 	count_collectable(&v);

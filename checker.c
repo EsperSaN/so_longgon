@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:10:25 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/02 01:27:49 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/02 02:08:16 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,51 @@ char	**file_init(char	*maps)
 	if (!two_array)
 		return (error(errno));
 	return (two_array);
+}
+
+int	is_all_char(char *str, char c)
+{
+	printf("check [%s]\n", str);
+	if (!str)
+		return (0);
+	while (*str)
+	{
+		if (*str != c)
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
+int	double_a_check(char	**maps)
+{
+	int	width;
+	int	hight;
+	int	len;
+
+	if (!maps)
+		return (1);
+	width = ft_strlen(maps[0]);
+	hight = 0;
+	while (maps[hight])
+	{
+		len = ft_strlen(maps[hight]);
+		if (len != width || !is_char_in_set(maps[hight], "CPE01\n"))
+			return (1);
+		hight++; 
+	}
+	printf("check width pass\n");
+	if (!is_all_char(maps[0], '1') || !is_all_char(maps[hight - 1], '1'))
+		return (1);
+	printf("check updown pass\n");
+	hight = 0;
+	while (maps[hight])
+	{
+		if (maps[hight][0] != '1' || maps[hight][width - 1] != '1')
+			return (1);
+		hight++;
+	}
+	return (0);
 }
 
 void	print_map(char **maps)
