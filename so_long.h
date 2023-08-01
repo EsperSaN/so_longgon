@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:27:18 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/07/31 22:37:56 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/01 23:26:26 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,37 @@
 # define LEFT_KEY 123
 # define RIGHT_KEY 124
 # define ESC_KEY 53
+# define W 13
+# define S 1
+# define A 0
+# define D 2
+# define FIND_WALL 111
+# define FIND_COL 444
+# define FIND_EXIT 888
+# define EXIT_EXIT 8686
+# define EEXIT_COL 8669
+
+typedef struct t_map
+{
+	int	n_exit;
+	int	n_col;
+	int	n_ene;
+	int	n_tile;
+	int	n_wall;
+	int	m_width;
+}	t_m;
 
 typedef struct t_value
 {
 	char	**array_yx;
 	int		m_width;
 	int		m_hight;
+	int		collectable;
+	int		collected;
 	void	*mlx_window;
 	void	*mlx;
+	char	p_mode;
+	char	e_mode;
 }	t_var;
 
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -43,4 +66,19 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 
 char	**ft_split(char const *s, char c);
+void	free_var(t_var *v);
+
+void	find_the_object_pos(int (*pos)[2], char **maps, char tg);
+void	count_collectable(t_var *v);
+int		count_char_str(char *str, char c);
+int		find_char_in_str(char *str,	int c);
+int		swap_data(char *c1, char *c2);
+
+char	**error(int num);
+void	print_map(char **maps);
+
+char	**file_init(char	*maps);
+int		key_maneger(int key, t_var	*v);
+void	get_window_size(char **map_array, int *width, int *hight);
+int		change_frame(t_var *v);
 #endif
