@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:27:18 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/01 23:26:26 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/02 02:00:49 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ void	find_the_object_pos(int (*pos)[2], char **maps, char tg);
 void	count_collectable(t_var *v);
 int		count_char_str(char *str, char c);
 int		find_char_in_str(char *str,	int c);
+int		double_a_check(char	**maps);
 int		swap_data(char *c1, char *c2);
+void	free2d(char	**str);
 
 char	**error(int num);
 void	print_map(char **maps);
