@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:10:25 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/02 02:08:16 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/02 17:26:24 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	is_char_in_set(char	*maps_line, char	*allowlist)
 
 int	is_double(char	*str, char c)
 {
-	printf("in the function [%s]", str);
 	while (*str)
 	{
 		if (*str == c && *(str++) && *(str++) == c)
@@ -101,7 +100,6 @@ char	**file_init(char	*maps)
 
 int	is_all_char(char *str, char c)
 {
-	printf("check [%s]\n", str);
 	if (!str)
 		return (0);
 	while (*str)
@@ -130,10 +128,8 @@ int	double_a_check(char	**maps)
 			return (1);
 		hight++; 
 	}
-	printf("check width pass\n");
 	if (!is_all_char(maps[0], '1') || !is_all_char(maps[hight - 1], '1'))
 		return (1);
-	printf("check updown pass\n");
 	hight = 0;
 	while (maps[hight])
 	{

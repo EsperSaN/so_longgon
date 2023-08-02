@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:27:18 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/02 02:00:49 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/02 17:31:23 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define FIND_EXIT 888
 # define EXIT_EXIT 8686
 # define EEXIT_COL 8669
+# define IMG_SCALE 32
 
 typedef struct t_map
 {
@@ -45,6 +46,22 @@ typedef struct t_map
 	int	n_wall;
 	int	m_width;
 }	t_m;
+
+typedef struct s_position
+{
+	int	x;
+	int	y;
+}	t_pos;
+
+typedef struct s_image 
+{
+	void		*reference;
+	t_pos		size;
+	char		*pixels;
+	int			bits_per_pixel;
+	int			line_size;
+	int			endian;
+}				t_img;
 
 typedef struct t_value
 {
@@ -57,6 +74,7 @@ typedef struct t_value
 	void	*mlx;
 	char	p_mode;
 	char	e_mode;
+	void	*frame;
 }	t_var;
 
 char	*ft_strjoin(char const *s1, char const *s2);
