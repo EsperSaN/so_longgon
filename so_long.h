@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:27:18 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/02 17:31:23 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/03 18:47:53 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,18 @@
 # define EXIT_EXIT 8686
 # define EEXIT_COL 8669
 # define IMG_SCALE 32
+
+# define FLOOR_P "./img/floor.xpm"
+# define WALL_P "./img/wall.xpm"
+# define PLAYER_P "./img/player.xpm"
+# define COL_P "./img/collectable.xpm"
+# define EXIT_P "./img/exit.xpm"
+
+# define FLOOR 0
+# define WALL 1
+# define PLAYER 2
+# define COL 3
+# define EXIT 4
 
 typedef struct t_map
 {
@@ -75,6 +87,7 @@ typedef struct t_value
 	char	p_mode;
 	char	e_mode;
 	void	*frame;
+	struct s_image	img[5];
 }	t_var;
 
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -83,6 +96,7 @@ size_t	ft_strlen(const char *s);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 
+void	get_img(t_var *v);
 char	**ft_split(char const *s, char c);
 void	free_var(t_var *v);
 
