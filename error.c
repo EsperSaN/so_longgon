@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:37:31 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/01 22:11:24 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/05 17:18:27 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,11 @@ void	free_var(t_var *v)
 		free2d(v->array_yx);
 		v->array_yx = NULL;
 	}
+}
+
+void	error_exit(int ernum, char *er_str)
+{
+	if (*er_str)
+		write(2, er_str, ft_strlen(er_str));
+	exit(ernum);
 }

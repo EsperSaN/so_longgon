@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:27:18 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/03 18:47:53 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/05 17:20:51 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct t_value
 }	t_var;
 
 char	*ft_strjoin(char const *s1, char const *s2);
-void	ft_putstr(char *str);
+void	ft_putstr_fd(char *str, int fd);
 size_t	ft_strlen(const char *s);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
@@ -107,9 +107,12 @@ int		find_char_in_str(char *str,	int c);
 int		double_a_check(char	**maps);
 int		swap_data(char *c1, char *c2);
 void	free2d(char	**str);
+int		is_element_exceed(char	*str);
+int		is_extention(char	*str, char *extention);
 
 char	**error(int num);
 void	print_map(char **maps);
+void	error_exit(int ernum, char *er_str);
 
 char	**file_init(char	*maps);
 int		key_maneger(int key, t_var	*v);

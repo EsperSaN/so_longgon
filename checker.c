@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:10:25 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/02 17:26:24 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/05 17:33:20 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,20 @@ char	*get_all_data(int fd)
 
 	buff = ft_calloc(sizeof(char), (READ_SIZE + 1));
 	if (!buff)
-		return (0);
+		return (NULL);
 	ret = ft_calloc(sizeof(char), 1);
 	if (!ret)
-		return (0);
+		return (NULL);
 	read_count = 1;
 	while (read_count != 0)
 	{
 		read_count = read(fd, buff, READ_SIZE);
+		if (read_count == -1)
+		{
+			free(ret);
+			free(buff);
+			return (NULL);
+		}
 		buff[read_count] = '\0';
 		tmp = ret;
 		ret = ft_strjoin(ret, buff);
@@ -65,6 +71,8 @@ int	is_char_in_set(char	*maps_line, char	*allowlist)
 
 int	is_double(char	*str, char c)
 {
+	if (!str)
+		return (0);
 	while (*str)
 	{
 		if (*str == c && *(str++) && *(str++) == c)
@@ -80,21 +88,28 @@ char	**file_init(char	*maps)
 	char	**two_array;
 	int		fd;
 
+	if (!is_extention(maps, ".ber"))
+	{
+		ft_putstr_fd("Error Check your maps extention\n", 2);
+		return (NULL);
+	}
 	fd = open(maps, O_RDONLY);
 	if (fd == -1)
-		return (error(errno));
+		return (NULL);
 	line_of_data = get_all_data(fd);
-	if (!line_of_data || is_double(line_of_data, '\n')
-		|| !is_char_in_set(line_of_data, "CPE01\n") || *line_of_data == '\n')
+	if (!line_of_data)
+		return (NULL);
+	if (is_double(line_of_data, '\n')
+		|| !is_char_in_set(line_of_data, "CPE01\n") || *line_of_data == '\n'
+		|| is_element_exceed(line_of_data))
 	{
 		free(line_of_data);
-		printf("HAVE FORBBINDEN CHAR ONLY 'CPE01' is allow!!!!!\n");
-		exit(1);
+		return (NULL);
 	}
 	two_array = ft_split(line_of_data, '\n');
 	free(line_of_data);
 	if (!two_array)
-		return (error(errno));
+		return (NULL);
 	return (two_array);
 }
 
@@ -137,6 +152,8 @@ int	double_a_check(char	**maps)
 			return (1);
 		hight++;
 	}
+	if (!flood_fill(maps))
+		return (1);
 	return (0);
 }
 
