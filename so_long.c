@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:26:54 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/05 17:36:47 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/09 09:15:59 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ int	main(int ac, char **av)
 		free2d(v.array_yx);
 		error_exit(1, "Error please check you maps content\n");
 	}
-	count_collectable(&v);
-	get_window_size(v.array_yx, &v.m_width, &v.m_hight);
-	v.mlx = mlx_init();
-	v.mlx_window = mlx_new_window(v.mlx, (v.m_width * IMG_SCALE), (v.m_hight * IMG_SCALE), "TEST");
-	get_img(&v);
-	mlx_key_hook(v.mlx_window, key_maneger, &v);
-	mlx_loop_hook(v.mlx, change_frame, &v);
-	mlx_loop(v.mlx);
+	//count_collectable(&v);
+	// get_window_size(v.array_yx, &v.m_width, &v.m_hight);
+	// v.mlx = mlx_init();
+	// v.mlx_window = mlx_new_window(v.mlx, (v.m_width * IMG_SCALE), (v.m_hight * IMG_SCALE), "TEST");
+	// get_img(&v);
+	// mlx_key_hook(v.mlx_window, key_maneger, &v);
+	// mlx_loop_hook(v.mlx, change_frame, &v);
+	// mlx_loop(v.mlx);
 }

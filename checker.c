@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:10:25 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/05 17:33:20 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/08 21:14:17 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int	is_all_char(char *str, char c)
 	return (1);
 }
 
-int	double_a_check(char	**maps)
+int	double_a_check(char	**maps, int col_n)
 {
 	int	width;
 	int	hight;
@@ -152,7 +152,7 @@ int	double_a_check(char	**maps)
 			return (1);
 		hight++;
 	}
-	if (!flood_fill(maps))
+	if (!flood_fill_checker(maps, col_n))
 		return (1);
 	return (0);
 }

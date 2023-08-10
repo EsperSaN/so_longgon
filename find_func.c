@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:11:40 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/05 17:01:13 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/09 09:06:08 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	find_the_object_pos(int (*pos)[2], char **maps, char tg)
 	int	find;
 
 	find = 0;
-	x = 0;
+	x = 0; 
 	y = 0;
 	while (maps[y] && find == 0)
 	{
@@ -94,21 +94,20 @@ int	is_element_exceed(char	*str)
 	return (0);
 }
 
-void	count_collectable(t_var *v)
+int	count_collectable(char **maps)
 {
 	char	**map_data;
 	int		y;
 	int		find;
 
-	if (!v || !v->array_yx)
-		return;
-	map_data = v->array_yx;
+	if (!maps)
+		return (0);
 	y = 0;
 	find = 0;
-	while (map_data[y])
+	while (maps[y])
 	{
-		find += count_char_str(map_data[y], 'C');
+		find += count_char_str(maps[y], 'C');
 		y++;
 	}
-	v->collectable = find;
+	return (find);
 }
