@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:38:23 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/03 19:33:10 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/10 23:30:32 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,12 @@ void	get_window_size(char **map_array, int *width, int *hight)
 	}
 }
 
-void	put_pic(t_var v ,int x, int y, int mode)
+void	put_pic(t_var v, int x, int y, int mode)
 {
-	t_img img;
+	t_img	img;
 
 	img = v.img[mode];
-	
-	mlx_put_image_to_window(v.mlx, v.mlx_window,img.reference, x * 32, y * 32);
-	printf ("put the img at [%d] [%d]\n", x , y);
+	mlx_put_image_to_window(v.mlx, v.mlx_window, img.reference, x * 32, y * 32);
 }
 
 int	change_frame(t_var *v)
