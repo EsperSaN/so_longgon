@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:27:18 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 11:44:33 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:34:33 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define TITLE "SO_LONGON"
 # define READ_SIZE 1
-# define P_SIZE 32
+# define IMG_SIZE 32
 # define FLOOR_P "./img/floor.xpm"
 # define WALL_P "./img/wall.xpm"
 # define PLAYER_P "./img/player.xpm"
@@ -50,6 +50,11 @@
 # define PLAYER 2
 # define COL 3
 # define EXIT 4
+
+# define COMPLETE "ROSE ARE RED VIOLET ARE BLUE MISSON IS SUCCESFUL : THX YOU\n"
+# define MAPS_ERR "MAPS ERROR : PLZ CHECK YOUR CONTENT ON MAP\n"
+# define MISS_FAIL "MAPS ERROR : Even ChatGPT can't complete this maps\n"
+# define IMG_ERR "MAPS ERROR : IMAGE / SIZE NOT GOOD plz check you file/header\n"
 
 typedef struct s_flood
 {
@@ -111,7 +116,7 @@ int		find_char_in_str(char *str,	int c);
 
 /* get img_data and winsize */
 void	get_window_size(char **map_array, int *width, int *hight, int img_size);
-void	get_img_data(t_var *v);
+int		get_img_data(t_var *v);
 
 /* swap_data */
 int		swap_data(char *from, char *to);
@@ -136,6 +141,6 @@ char	**error(int num, char *str);
 void	ft_putstr_fd(char *str, int fd);
 void	free2d(char	**str);
 void	free_var(t_var *v);
-void	error_exit(int ernum, char *er_str);
+void	error_exit(int ernum, char *er_str, char **str);
 
 #endif
