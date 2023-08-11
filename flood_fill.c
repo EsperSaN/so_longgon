@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 14:47:45 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 11:44:17 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:43:59 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	flood_fill_checker(char **maps)
 	free2d(ff_cp);
 	if (f.exit_find != 1 || f.collected != f.collectable_in_maps)
 	{
-		printf("ERROR: mission is impossible CODE: can't do the mission\n");
+		ft_putstr_fd(MISS_FAIL, 2);
 		return (0);
 	}
 	return (1);
