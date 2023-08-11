@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:26:54 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 11:58:52 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:35:19 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,14 @@ int	main(int ac, char **av)
 	st_init(&v);
 	v.array_yx = file_init(av[1]);
 	if (v.array_yx == NULL)
-		error_exit(1, "Error please check your maps content\n");
+		error_exit(1, MAPS_ERR, v.array_yx);
 	if (array_checker(v.array_yx))
-	{
-		free2d(v.array_yx);
-		error_exit(1, "Error please check you maps content\n");
-	}
+		error_exit(1, MAPS_ERR, v.array_yx);
 	v.mlx = mlx_init();
-	v.collectable = count_char_in_maps(v.array_yx, 'C');
 	if (!get_img_data(&v))
-	{
-		free2d(v.array_yx);
-		error_exit(1, "cannot get the img\n");
-	}
+		error_exit(1, IMG_ERR, v.array_yx);
+	v.collectable = count_char_in_maps(v.array_yx, 'C');
 	get_window_size(v.array_yx, &v.win_w, &v.win_h, v.imgsize);
-	printf("winsize is [%d] [%d]\n", v.win_h, v.win_w);
 	v.window = mlx_new_window(v.mlx, v.win_w, v.win_h, TITLE);
 	mlx_key_hook(v.window, key_maneger, &v);
 	mlx_loop_hook(v.mlx, change_frame, &v);
