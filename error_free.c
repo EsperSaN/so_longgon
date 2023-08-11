@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:37:31 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 11:36:49 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:47:33 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,6 @@ void	ft_putstr_fd(char *str, int fd)
 		write(fd, str, 1);
 		str++;
 	}
-}
-
-char	**error(int num, char *str)
-{
-	ft_putstr_fd(str, 2);
-	exit(num);
-	return (0);
 }
 
 void	free2d(char	**str)
@@ -62,9 +55,10 @@ void	free_var(t_var *v)
 	}
 }
 
-void	error_exit(int ernum, char *er_str)
+void	error_exit(int ernum, char *er_str, char **str)
 {
-	if (*er_str)
-		write(2, er_str, ft_strlen(er_str));
+	if (str)
+		free2d(str);
+	ft_putstr_fd(er_str, 2);
 	exit(ernum);
 }
