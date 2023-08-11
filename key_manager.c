@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:17:49 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/02 15:49:19 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:45:02 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ int	key_maneger(int key ,t_var	*v)
 	{
 		if (v->collected == v->collectable)
 		{
-			printf("[CONGREAT TU LATIONNNNNNNNNNNNNNNNNNNNN!!!!!!]\n");
 			free_var(v);
-			error(22);
+			error(2, "CONGREAT");
 		}
 		v->p_mode = 'p';
 		printf("EXIT!!!\n");
@@ -59,7 +58,5 @@ int	key_maneger(int key ,t_var	*v)
 	}
 	else
 		printf("walk\n");
-	print_map(v->array_yx);
-	printf("theplayer[%c] position is [%d,%d] collect [%d]\n",v->p_mode, p_xy[0], p_xy[1], v->collected);
 	return (1);
 }

@@ -1,44 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_data.c                                        :+:      :+:    :+:   */
+/*   print_2d_array.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/01 13:51:04 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 03:59:24 by pruenrua         ###   ########.fr       */
+/*   Created: 2023/08/11 10:26:38 by pruenrua          #+#    #+#             */
+/*   Updated: 2023/08/11 10:26:57 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	swap_data(char *from, char *to)
+void	print_map(char **maps)
 {
-	char	tmp;
-	int		ret;
+	int	y;
+	int	x;
 
-	ret = 0;
-	if (*to == '1')
-		return (FIND_WALL);
-	else if ((*from == 'p' && *to == 'C') || (*from == 'p' && *to == '0'))
+	x = 0;
+	y = 0;
+	while (maps[y])
 	{
-		*from = 'E';
-		*to = 'P';
-		return (EEXIT_COL);
+		x = 0;
+		while (maps[y][x])
+		{
+			printf("[%c]", maps[y][x]);
+			x++;
+		}
+		printf("\n");
+		y++;
 	}
-	else if (*to == 'C')
-	{
-		ret = FIND_COL;
-		*to = '0';
-	}
-	else if (*to == 'E')
-	{
-		*to = '0';
-		*from = 'p';
-		ret = FIND_EXIT;
-	}
-	tmp = *from;
-	*from = *to;
-	*to = tmp;
-	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:27:18 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/10 23:39:12 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:44:33 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,15 @@
 # include <unistd.h>
 # include <errno.h>
 
+# define TITLE "SO_LONGON"
 # define READ_SIZE 1
+# define P_SIZE 32
+# define FLOOR_P "./img/floor.xpm"
+# define WALL_P "./img/wall.xpm"
+# define PLAYER_P "./img/player.xpm"
+# define COL_P "./img/collectable.xpm"
+# define EXIT_P "./img/exit.xpm"
+
 # define UP_KEY 126
 # define DOWN_KEY 125
 # define LEFT_KEY 123
@@ -30,24 +38,26 @@
 # define S 1
 # define A 0
 # define D 2
+
 # define FIND_WALL 111
 # define FIND_COL 444
 # define FIND_EXIT 888
 # define EXIT_EXIT 8686
 # define EEXIT_COL 8669
-# define P_SIZE 32
-
-# define FLOOR_P "./img/floor.xpm"
-# define WALL_P "./img/wall.xpm"
-# define PLAYER_P "./img/player.xpm"
-# define COL_P "./img/collectable.xpm"
-# define EXIT_P "./img/exit.xpm"
 
 # define FLOOR 0
 # define WALL 1
 # define PLAYER 2
 # define COL 3
 # define EXIT 4
+
+typedef struct s_flood
+{
+	int	collectable_in_maps;
+	int	collected;
+	int	exit_find;
+
+}	t_ff;
 
 typedef struct s_position
 {
@@ -57,22 +67,23 @@ typedef struct s_position
 
 typedef struct s_image 
 {
-	void		*reference;
+	void		*ref;
 	t_pos		size;
-	char		*pixels;
-	int			bits_per_pixel;
+	char		*px;
+	int			bit_px;
 	int			line_size;
-	int			endian;
+	int			ed;
 }				t_img;
 
 typedef struct t_value
 {
 	char			**array_yx;
-	int				m_w;
-	int				m_h;
+	int				win_w;
+	int				win_h;
+	int				imgsize;
 	int				collectable;
 	int				collected;
-	void			*mlx_window;
+	void			*window;
 	void			*mlx;
 	char			p_mode;
 	char			e_mode;
@@ -80,34 +91,51 @@ typedef struct t_value
 	struct s_image	img[5];
 }	t_var;
 
-char	*ft_strjoin(char const *s1, char const *s2);
-void	ft_putstr_fd(char *str, int fd);
-size_t	ft_strlen(const char *s);
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t count, size_t size);
+/* file init */
+char	**file_init(char	*maps);
 
-void	get_img(t_var *v);
-char	**ft_split(char const *s, char c);
-void	free_var(t_var *v);
+/* array checker */
+int		array_checker(char	**maps);
+int		is_all_char(char *str, char c);
+int		is_char_in_set(char	*maps_line, char *allowlist);
 
-void	find_the_object_pos(int (*pos)[2], char **maps, char tg);
-int		count_collectable(char **maps);
-int		count_char_str(char *str, char c);
-int		find_char_in_str(char *str,	int c);
-int		double_a_check(char	**maps);
-int		swap_data(char *c1, char *c2);
-void	free2d(char	**str);
-int		is_element_exceed(char	*str);
-int		is_extention(char	*str, char *extention);
-
+/* ff_floodfill */
 int		flood_fill_checker(char **maps);
 
-char	**error(int num);
-void	print_map(char **maps);
+/* find and count */
+int		count_char_in_maps(char **maps, char c);
+int		is_element_exceed(char	*str);
+int		count_char_str(char *str, char c);
+void	find_the_object_pos(int (*pos)[2], char **maps, char tg);
+int		find_char_in_str(char *str,	int c);
+
+/* get img_data and winsize */
+void	get_window_size(char **map_array, int *width, int *hight, int img_size);
+void	get_img_data(t_var *v);
+
+/* swap_data */
+int		swap_data(char *from, char *to);
+
+/* key_manager */
+int		key_maneger(int key, t_var	*v);
+
+/* change frame */
+int		change_frame(t_var *v);
+
+/* util_join_calloc */
+char	*ft_strjoin(char const *s1, char const *s2);
+void	*ft_calloc(size_t count, size_t size);
+size_t	ft_strlen(const char *s);
+
+/* util_split */
+char	**ft_split(char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+/* error and free */
+char	**error(int num, char *str);
+void	ft_putstr_fd(char *str, int fd);
+void	free2d(char	**str);
+void	free_var(t_var *v);
 void	error_exit(int ernum, char *er_str);
 
-char	**file_init(char	*maps);
-int		key_maneger(int key, t_var	*v);
-void	get_window_size(char **map_array, int *width, int *hight);
-int		change_frame(t_var *v);
 #endif

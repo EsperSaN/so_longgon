@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 13:28:20 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/07/31 13:35:49 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:53:27 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static size_t	how_long(char const *s, char c)
 	return (count);
 }
 
-static char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*subbstr;
 	size_t	i;

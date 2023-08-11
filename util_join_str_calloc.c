@@ -6,22 +6,11 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 13:24:48 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/05 17:20:26 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:36:39 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_putstr_fd(char *str, int fd)
-{
-	if (!str)
-		return ;
-	while (*str)
-	{
-		write(fd, str, 1);
-		str++;
-	}
-}
 
 size_t	ft_strlen(const char *s)
 {
@@ -36,7 +25,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-void	ft_bzero(void *s, size_t n)
+static void	ft_bzero(void *s, size_t n)
 {
 	while (n)
 	{
