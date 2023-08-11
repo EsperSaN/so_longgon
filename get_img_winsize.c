@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:40:15 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 15:46:11 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:48:18 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	get_window_size(char **map_array, int *width, int *hight, int img_size)
 {
-	int	len;
-
 	*width = 0;
 	*hight = 0;
 	*width = ft_strlen(map_array[0]);
@@ -53,7 +51,6 @@ static int	get_xpm(t_var *v)
 int	get_img_data(t_var *v)
 {
 	t_img	*i;
-	int		j;
 
 	if (get_xpm(v))
 	{
