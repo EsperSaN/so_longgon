@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:11:40 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 15:42:13 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:49:01 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ int	is_element_exceed(char	*str)
 
 int	count_char_in_maps(char **maps, char c)
 {
-	char	**map_data;
 	int		y;
 	int		find;
 
