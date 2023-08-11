@@ -6,7 +6,7 @@
 #    By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 18:21:34 by pruenrua          #+#    #+#              #
-#    Updated: 2023/08/11 11:43:37 by pruenrua         ###   ########.fr        #
+#    Updated: 2023/08/11 15:47:49 by pruenrua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = 
+CFLAGS = -Wall -Werror -Wextra
 
 MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
