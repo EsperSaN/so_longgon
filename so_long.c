@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:26:54 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 15:35:19 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 16:21:01 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	st_init(t_var *v)
 	v->mlx = NULL;
 	v->window = NULL;
 	v->p_mode = 'P';
-	v->e_mode = 'E';
+	v->total_mv = 0;
 	v->frame = NULL;
 	v->imgsize = 0;
 }

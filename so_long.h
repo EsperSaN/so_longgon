@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:27:18 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 15:34:33 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 16:50:51 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@
 # define D 2
 
 # define FIND_WALL 111
-# define FIND_COL 444
-# define FIND_EXIT 888
-# define EXIT_EXIT 8686
-# define EEXIT_COL 8669
+# define MV_FIND_COL 444
+# define MV_FIND_EXIT 888
+# define MV_EXIT_EXIT 8686
+# define MV_EEXIT_COL 8669
+# define MV_NORM 2543
+# define EXIT_PROGRAM 403
 
 # define FLOOR 0
 # define WALL 1
@@ -55,6 +57,7 @@
 # define MAPS_ERR "MAPS ERROR : PLZ CHECK YOUR CONTENT ON MAP\n"
 # define MISS_FAIL "MAPS ERROR : Even ChatGPT can't complete this maps\n"
 # define IMG_ERR "MAPS ERROR : IMAGE / SIZE NOT GOOD plz check you file/header\n"
+# define BYE_MSG "USER ERROR : YOU EXIT BEFORE THE GAME END UwU\n"
 
 typedef struct s_flood
 {
@@ -80,7 +83,15 @@ typedef struct s_image
 	int			ed;
 }				t_img;
 
-typedef struct t_value
+typedef struct s_read
+{
+	char	*buff;
+	char	*ret;
+	int		read_count;
+	char	*tmp;
+}			t_read;
+
+typedef struct s_value
 {
 	char			**array_yx;
 	int				win_w;
@@ -91,7 +102,7 @@ typedef struct t_value
 	void			*window;
 	void			*mlx;
 	char			p_mode;
-	char			e_mode;
+	int				total_mv;
 	void			*frame;
 	struct s_image	img[5];
 }	t_var;
@@ -135,6 +146,9 @@ size_t	ft_strlen(const char *s);
 /* util_split */
 char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+/* ft_itoa */
+char	*ft_itoa(int n);
 
 /* error and free */
 char	**error(int num, char *str);

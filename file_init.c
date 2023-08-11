@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 10:23:31 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 15:41:00 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 16:52:34 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,32 +50,29 @@ static int	is_double(char	*str, char c)
 
 static char	*read_file(int fd)
 {
-	char	*buff;
-	char	*ret;
-	int		read_count;
-	char	*tmp;
+	t_read	r;
 
-	buff = ft_calloc(sizeof(char), (READ_SIZE + 1));
-	ret = ft_calloc(sizeof(char), 1);
-	if (!ret || !buff)
+	r.buff = ft_calloc(sizeof(char), (READ_SIZE + 1));
+	r.ret = ft_calloc(sizeof(char), 1);
+	if (!r.ret || !r.buff)
 		return (NULL);
-	read_count = 1;
-	while (read_count != 0)
+	r.read_count = 1;
+	while (r.read_count != 0)
 	{
-		read_count = read(fd, buff, READ_SIZE);
-		if (read_count == -1)
+		r.read_count = read(fd, r.buff, READ_SIZE);
+		if (r.read_count == -1)
 		{
-			free(ret);
-			free(buff);
+			free(r.ret);
+			free(r.buff);
 			return (NULL);
 		}
-		buff[read_count] = '\0';
-		tmp = ret;
-		ret = ft_strjoin(ret, buff);
-		free(tmp);
+		r.buff[r.read_count] = '\0';
+		r.tmp = r.ret;
+		r.ret = ft_strjoin(r.ret, r.buff);
+		free(r.tmp);
 	}
-	free(buff);
-	return (ret);
+	free(r.buff);
+	return (r.ret);
 }
 
 char	**file_init(char	*maps)
