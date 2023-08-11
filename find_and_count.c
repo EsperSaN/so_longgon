@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:11:40 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 10:44:48 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:42:13 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,17 @@ int	is_element_exceed(char	*str)
 	collectable_c = count_char_str(str, 'C');
 	if (player_c != 1)
 	{
-		ft_putstr_fd("ERROR only one player are accept\n", 2);
+		ft_putstr_fd("ONLY one player are accept\n", 2);
 		return (1);
 	}
 	if (exit_c != 1)
 	{
-		ft_putstr_fd("ERROR only one exit are accept\n", 2);
+		ft_putstr_fd("ONLY one exit are accept\n", 2);
 		return (1);
 	}
 	if (collectable_c <= 0)
 	{
-		ft_putstr_fd("ERROR 1 collectable or more are accept\n", 2);
+		ft_putstr_fd("ONLY 1 collectable or more are accept\n", 2);
 		return (1);
 	}
 	return (0);
