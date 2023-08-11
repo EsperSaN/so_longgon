@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:27:18 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 16:50:51 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 17:20:39 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@
 # define COL 3
 # define EXIT 4
 
+//# define COMPLETE "Error\n"
+//# define MAPS_ERR "Error\n"
+//# define MISS_FAIL "Error\n"
+//# define IMG_ERR "Error\n"
+//# define BYE_MSG "Error\n"
 # define COMPLETE "ROSE ARE RED VIOLET ARE BLUE MISSON IS SUCCESFUL : THX YOU\n"
 # define MAPS_ERR "MAPS ERROR : PLZ CHECK YOUR CONTENT ON MAP\n"
 # define MISS_FAIL "MAPS ERROR : Even ChatGPT can't complete this maps\n"

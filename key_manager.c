@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:17:49 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 16:43:33 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/11 17:35:30 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ static	void	put_stat(t_var *v, int fd)
 	ft_putstr_fd("/", fd);
 	ft_putstr_fd(collectable, fd);
 	ft_putstr_fd("\n", fd);
+	free(collectable);
+	free(collected);
+	free(move);
 }
 
 static void	move_event(t_var *v, int event)
