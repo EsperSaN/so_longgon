@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:27:18 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 17:20:39 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/12 13:05:29 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct s_value
 
 /* file init */
 char	**file_init(char	*maps);
+void	st_init(t_var *v);
 
 /* array checker */
 int		array_checker(char	**maps);
@@ -160,6 +161,6 @@ char	**error(int num, char *str);
 void	ft_putstr_fd(char *str, int fd);
 void	free2d(char	**str);
 void	free_var(t_var *v);
-void	error_exit(int ernum, char *er_str, char **str);
+void	error_exit(int ernum, char *er_str, t_var *v);
 
 #endif

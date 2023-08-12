@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 16:17:49 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/11 17:35:30 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/12 13:01:37 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ static	void	put_stat(t_var *v, int fd)
 static void	move_event(t_var *v, int event)
 {
 	if (event == EXIT_PROGRAM)
-		error_exit(0, BYE_MSG, v->array_yx);
+		error_exit(0, BYE_MSG, v);
 	else if (event == MV_FIND_EXIT)
 	{
 		v->total_mv += 1;
 		if (v->collected == v->collectable)
-			error_exit(0, COMPLETE, v->array_yx);
+			error_exit(0, COMPLETE, v);
 		v->p_mode = 'p';
 	}
 	else if (event == MV_EXIT_EXIT)
