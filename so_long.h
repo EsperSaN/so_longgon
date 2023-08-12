@@ -6,7 +6,7 @@
 /*   By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:27:18 by pruenrua          #+#    #+#             */
-/*   Updated: 2023/08/12 13:05:29 by pruenrua         ###   ########.fr       */
+/*   Updated: 2023/08/12 13:18:46 by pruenrua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 # define SO_LONG_H
 
 # include "./mlx/mlx.h"
-# include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <errno.h>
 
 # define TITLE "SO_LONGON"
 # define READ_SIZE 1
@@ -59,10 +57,10 @@
 //# define IMG_ERR "Error\n"
 //# define BYE_MSG "Error\n"
 # define COMPLETE "ROSE ARE RED VIOLET ARE BLUE MISSON IS SUCCESFUL : THX YOU\n"
-# define MAPS_ERR "MAPS ERROR : PLZ CHECK YOUR CONTENT ON MAP\n"
-# define MISS_FAIL "MAPS ERROR : Even ChatGPT can't complete this maps\n"
-# define IMG_ERR "MAPS ERROR : IMAGE / SIZE NOT GOOD plz check you file/header\n"
-# define BYE_MSG "USER ERROR : YOU EXIT BEFORE THE GAME END UwU\n"
+# define MAPS_ERR "Error MAPS : PLZ CHECK YOUR CONTENT ON MAP\n"
+# define MISS_FAIL "Error MAPS : Even ChatGPT can't complete this maps\n"
+# define IMG_ERR "Error MAPS : IMAGE / SIZE NOT GOOD plz check you file/header\n"
+# define BYE_MSG "Error USER : YOU EXIT BEFORE THE GAME END UwU\n"
 
 typedef struct s_flood
 {

@@ -6,7 +6,7 @@
 #    By: pruenrua <pruenrua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/25 18:21:34 by pruenrua          #+#    #+#              #
-#    Updated: 2023/08/11 16:37:17 by pruenrua         ###   ########.fr        #
+#    Updated: 2023/08/12 13:24:06 by pruenrua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MLXFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 SRC = error_free.c flood_fill.c key_manager.c so_long.c swap_data.c \
 	array_checker.c file_init.c get_img_winsize.c util_join_str_calloc.c \
-	change_frame.c find_and_count.c print_2d_array.c util_split.c ft_itoa.c
+	change_frame.c find_and_count.c util_split.c ft_itoa.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -39,12 +39,13 @@ fclean : clean
 	rm -f $(NAME)
 
 mlx_init : 
-	@make -C mlx
+	make -C mlx
 
 mlx_clean :
-	@make clean -C mlx
+	make clean -C mlx
 norm :
 	norminette $(SRC)
+	
 re : fclean $(NAME)
 
-.PHONY : clean fclean re
+.PHONY : clean fclean re norm mlx_clean mlx_init
